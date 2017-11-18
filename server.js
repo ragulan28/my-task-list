@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
 // set static folder
-app.use(express.static(path.join(__dirname,'client')));
+app.use(express.static(path.join(__dirname,'./client')));
 
 //body parser MW
 app.use(bodyParser.json());
@@ -24,5 +24,5 @@ app.use('/',index);
 app.use('/api',tasks);
 
 app.listen(port,()=>{
-    console.log(`Server start on port: ${port}`)
+    console.log(`Server start on port: ${port}`);
 });
