@@ -15,23 +15,16 @@ router.get('/tasks', (req, res, next) => {
 });
 
 //find by id
-router.get('/tasks', (req, res, next) => {
-    db.tasks.find((err,tasks)=>{
+router.get('/tasks/:id', (req, res, next) => {
+    db.tasks.findOne({_id:mongoJS.ObjectID(req.params.id)},(err,task)=>{
         if (err){
             res.send(err);
         }else {
-            res.json(tasks);
-        }
-    });
-});router.get('/tasks:id', (req, res, next) => {
-    db.tasks.find((err,tasks)=>{
-        if (err){
-            res.send(err);
-        }else {
-            res.json(tasks);
+            res.json(task);
         }
     });
 });
+
 
 
 module.exports = router;
